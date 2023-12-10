@@ -87,9 +87,6 @@ if (clickedImage) {
   const largeImageSrc = clickedImage.getAttribute('data-source');
 
 if (largeImageSrc) {
-  const modalImage = document.querySelector('.modal-image');
-  modalImage.src = largeImageSrc;
-
   const instance = basicLightbox.create(`
   <div class="modal">
     <img class="modal-image" src="${largeImageSrc}" alt="Large Image">
@@ -97,10 +94,18 @@ if (largeImageSrc) {
 `);
 
 instance.show();
-
 }
 
+const closeOnEscape = (event) => {
+  if (event.key === 'Escape') {
+    instance.close();
+    window.removeEventListener('keydown', closeOnEscape);
+  }
+};
+window.addEventListener('keydown', closeOnEscape);
 }
 
-  });
+});
+
+  
   
