@@ -81,5 +81,26 @@ const images = [
   galleryConteiner.innerHTML = galleryMarkup;
 
   galleryConteiner.addEventListener('click', function (e) {e.preventDefault();
+
+    const clickedImage = e.target.closest('.gallery-image');
+if (clickedImage) {
+  const largeImageSrc = clickedImage.getAttribute('data-source');
+
+if (largeImageSrc) {
+  const modalImage = document.querySelector('.modal-image');
+  modalImage.src = largeImageSrc;
+
+  const instance = basicLightbox.create(`
+  <div class="modal">
+    <img class="modal-image" src="${largeImageSrc}" alt="Large Image">
+  </div>
+`);
+
+instance.show();
+
+}
+
+}
+
   });
   
