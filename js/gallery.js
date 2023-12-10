@@ -92,10 +92,6 @@ if (largeImageSrc) {
     <img class="modal-image" src="${largeImageSrc}" alt="Large Image">
   </div>
 `);
-
-instance.show();
-}
-
 const closeOnEscape = (event) => {
   if (event.key === 'Escape') {
     instance.close();
@@ -103,6 +99,12 @@ const closeOnEscape = (event) => {
   }
 };
 window.addEventListener('keydown', closeOnEscape);
+
+
+instance.show();
+}
+
+
 }
 
 });
