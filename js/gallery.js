@@ -90,23 +90,23 @@ if (largeImageSrc) {
   const instance = basicLightbox.create(`
   <div class="modal">
     <img class="modal-image" src="${largeImageSrc}" alt="Large Image">
-  </div>
-`);
+  </div>`, {
+    onClose: () => {
+      window.removeEventListener('keydown', closeOnEscape);
+    }
+  });
+
 const closeOnEscape = (event) => {
   if (event.key === 'Escape') {
     instance.close();
-    window.removeEventListener('keydown', closeOnEscape);
   }
-};
-window.addEventListener('keydown', closeOnEscape);
+  };
 
+window.addEventListener('keydown', closeOnEscape);
 
 instance.show();
 }
-
-
 }
-
 });
 
   
